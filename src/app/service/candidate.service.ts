@@ -1,21 +1,18 @@
 import {Injectable} from '@angular/core';
 import {Candidate} from "./candidate";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidateService {
+  private readonly resourcePath = '/api/candidates';
 
-  private readonly candidates: Candidate[] = [
-    { id: 1, firstName: 'Joe', lastName: 'Doe'},
-    { id: 2, firstName: 'Jan', lastName: 'Kowalski'},
-    { id: 3, firstName: 'Piotr', lastName: 'Piotrowski'},
-  ];
-
-  constructor() { }
+  constructor(private readonly httpClient: HttpClient) {
+  }
 
   getCandidates(): Observable<Candidate[]> {
-    return of(this.candidates);
+    return this.httpClient.get<Candidate[]>(this.resourcePath);
   }
 }

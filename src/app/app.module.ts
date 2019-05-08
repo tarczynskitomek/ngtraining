@@ -13,6 +13,7 @@ import {MenuModule} from "primeng/menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MenubarModule} from "primeng/menubar";
 import {TableModule} from "primeng/table";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {TableModule} from "primeng/table";
     BrowserAnimationsModule,
     MenubarModule,
     TableModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

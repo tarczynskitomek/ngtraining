@@ -1,7 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CandidateListComponent } from './candidate-list.component';
+import {CandidateListComponent} from './candidate-list.component';
 import {TableModule} from "primeng/table";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('CandidateListComponent', () => {
   let component: CandidateListComponent;
@@ -11,10 +12,11 @@ describe('CandidateListComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         TableModule,
+        HttpClientTestingModule,
       ],
-      declarations: [ CandidateListComponent ]
+      declarations: [CandidateListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
