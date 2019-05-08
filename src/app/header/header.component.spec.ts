@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import {MenubarModule} from "primeng/menubar";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,6 +10,10 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MenubarModule,
+        RouterTestingModule,
+      ],
       declarations: [ HeaderComponent ]
     })
     .compileComponents();

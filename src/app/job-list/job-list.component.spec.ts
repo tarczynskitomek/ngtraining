@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { JobListComponent } from './job-list.component';
+import {JobListComponent} from './job-list.component';
+import {TableModule} from "primeng/table";
 
 describe('JobListComponent', () => {
   let component: JobListComponent;
@@ -8,9 +9,12 @@ describe('JobListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JobListComponent ]
+      imports: [
+        TableModule,
+      ],
+      declarations: [JobListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
