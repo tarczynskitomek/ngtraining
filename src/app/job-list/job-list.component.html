@@ -1,3 +1,5 @@
-<p>
-  job-list works!
-</p>
+<ng-container *ngIf="jobs$ | async as jobs">
+  <div *ngFor="let job of jobs">
+    {{job.id}}&nbsp;{{job.name}}&nbsp;{{job.validFrom}}
+  </div>
+</ng-container>
