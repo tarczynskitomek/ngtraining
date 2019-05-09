@@ -3,6 +3,7 @@
          (onLazyLoad)="onLoad($event)"
          [loading]="loading"
          [paginator]="true"
+         [first]="page?.number * PAGE_SIZE"
          [rows]="PAGE_SIZE"
          [totalRecords]="page?.totalElements">
   <ng-template pTemplate="header">
