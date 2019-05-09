@@ -9,7 +9,7 @@ import {Page} from "./page";
   providedIn: 'root'
 })
 export class CandidateService {
-  private readonly resourcePath = '/api/candidates';
+  private readonly resourcePath = '/candidates';
 
   constructor(private readonly httpClient: HttpClient) {
   }

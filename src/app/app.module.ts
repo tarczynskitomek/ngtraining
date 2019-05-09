@@ -13,9 +13,10 @@ import {MenuModule} from "primeng/menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MenubarModule} from "primeng/menubar";
 import {TableModule} from "primeng/table";
-import {HttpClientModule} from "@angular/common/http";
 import { FilterComponent } from './filter/filter.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ApiPathInterceptor} from "./interceptor/api-path.interceptor";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ApiPathInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

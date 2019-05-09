@@ -17,7 +17,7 @@ export class JobService {
     const params = new HttpParams()
       .append('page', page.toString())
       .append('size', pageSize.toString());
-    return this.httpClient.get('/api/jobs', {params}).pipe(
+    return this.httpClient.get('/jobs', {params}).pipe(
       tap(data => console.log(data)),
       map((data: any) => new Page(
         data._embedded.jobs,
