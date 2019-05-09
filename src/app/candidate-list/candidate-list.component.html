@@ -1,4 +1,10 @@
-<p-table [value]="candidates$ | async">
+<p-table [value]="page?.items"
+         [lazy]="true"
+         (onLazyLoad)="onLoad($event)"
+         [loading]="loading"
+         [paginator]="true"
+         [rows]="PAGE_SIZE"
+         [totalRecords]="page?.totalElements">
   <ng-template pTemplate="header">
     <tr>
       <th>First Name</th>

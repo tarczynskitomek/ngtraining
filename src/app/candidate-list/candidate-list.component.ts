@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
 import {Candidate} from "../service/candidate";
 import {CandidateService} from "../service/candidate.service";
+import {LazyLoadEvent} from "primeng/api";
+import {Page} from "../service/page";
 
 @Component({
   selector: 'app-candidate-list',
@@ -9,14 +10,26 @@ import {CandidateService} from "../service/candidate.service";
   styleUrls: ['./candidate-list.component.css']
 })
 export class CandidateListComponent implements OnInit {
+  PAGE_SIZE = 10;
 
-  candidates$: Observable<Candidate[]>;
+  page: Page<Candidate>;
+
+  loading = true;
 
   constructor(private readonly candidateService: CandidateService) {
   }
 
   ngOnInit() {
-    this.candidates$ = this.candidateService.getCandidates();
+  }
+
+  onLoad(event: LazyLoadEvent): void {
+    this.loading = true;
+    this.candidateService
+      .getCandidates(event.first / this.PAGE_SIZE, this.PAGE_SIZE)
+      .subscribe(candidatesPage => {
+        this.page = candidatesPage;
+        this.loading = false;
+      });
   }
 
 }

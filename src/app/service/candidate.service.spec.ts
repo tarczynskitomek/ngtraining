@@ -28,7 +28,7 @@ describe('CandidateService', () => {
       ]));
 
       // when
-      const candidates = candidateService.getCandidates();
+      const candidates = candidateService.getCandidates(0, 10);
 
       // then
       expect(httpClient.get).toHaveBeenCalled();

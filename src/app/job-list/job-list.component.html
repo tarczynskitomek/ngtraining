@@ -1,4 +1,9 @@
-<p-table [value]="jobs$ | async">
+<p-table [value]="jobs$ | async"
+         [paginator]="true"
+         [rows]="PAGE_SIZE"
+         [lazy]="true"
+         (onLazyLoad)="onLoad($event)"
+         [totalRecords]="totalElements">
   <ng-template pTemplate="header">
     <tr>
       <th>Id</th>
