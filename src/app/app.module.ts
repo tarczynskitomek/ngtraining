@@ -18,6 +18,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ApiPathInterceptor} from "./interceptor/api-path.interceptor";
 import { JobDetailsComponent } from './job-details/job-details.component';
+import { AddJobComponent } from './add-job/add-job.component';
+import {ButtonModule} from "primeng/button";
+import {CalendarModule} from "primeng/primeng";
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { JobDetailsComponent } from './job-details/job-details.component';
     JobListComponent,
     PageNotFoundComponent,
     FilterComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
+    AddJobComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,8 @@ import { JobDetailsComponent } from './job-details/job-details.component';
     TableModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ButtonModule,
+    CalendarModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ApiPathInterceptor, multi: true},

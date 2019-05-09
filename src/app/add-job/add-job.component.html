@@ -1,0 +1,24 @@
+<h1>Add job</h1>
+
+<form [formGroup]="addForm" (submit)="addJob()">
+
+  <div>
+    <input type="text" size="30" pInputText formControlName="code" placeholder="Code">
+  </div>
+
+  <div>
+    <input type="text" size="30" pInputText formControlName="name" placeholder="Name">
+  </div>
+
+  <div>
+    <textarea pInputTextarea formControlName="description" placeholder="Description"></textarea>
+  </div>
+
+  <div>
+    <p-calendar formControlName="validFrom" placeholder="Valid from"></p-calendar>
+  </div>
+
+  <div>
+    <p-button type="submit" [disabled]="!addForm.valid" label="Submit"></p-button>
+  </div>
+</form>
