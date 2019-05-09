@@ -27,4 +27,8 @@ export class JobService {
       )),
     );
   }
+
+  getJob(id: number): Observable<Job> {
+    return this.httpClient.get<Job>(`/jobs/${id}`);
+  }
 }

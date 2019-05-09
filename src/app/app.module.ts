@@ -17,6 +17,7 @@ import { FilterComponent } from './filter/filter.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ApiPathInterceptor} from "./interceptor/api-path.interceptor";
+import { JobDetailsComponent } from './job-details/job-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ApiPathInterceptor} from "./interceptor/api-path.interceptor";
     CandidateListComponent,
     JobListComponent,
     PageNotFoundComponent,
-    FilterComponent
+    FilterComponent,
+    JobDetailsComponent
   ],
   imports: [
     BrowserModule,

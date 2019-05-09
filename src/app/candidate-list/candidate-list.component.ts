@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Candidate} from "../service/candidate";
 import {CandidateService} from "../service/candidate.service";
 import {LazyLoadEvent} from "primeng/api";
@@ -6,6 +6,7 @@ import {Page} from "../service/page";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subject} from "rxjs";
 import {filter, first, map, pluck, skip, switchMap, takeUntil} from "rxjs/operators";
+import {Job} from "../service/job";
 
 @Component({
   selector: 'app-candidate-list',
@@ -15,6 +16,9 @@ import {filter, first, map, pluck, skip, switchMap, takeUntil} from "rxjs/operat
 export class CandidateListComponent implements OnInit, OnDestroy {
   private readonly destroyed$ = new Subject();
   private readonly lazyLoaded$ = new Subject<LazyLoadEvent>();
+
+  @Input()
+  job: Job;
 
   PAGE_SIZE = 10;
 
@@ -59,7 +63,7 @@ export class CandidateListComponent implements OnInit, OnDestroy {
     this.activatedRoute.queryParams.pipe(
       pluck('page'),
       map(page => page ? Number(page) : 0),
-      switchMap(page => this.candidateService.getCandidates(page, this.PAGE_SIZE)),
+      switchMap(page => this.candidateService.getCandidates(page, this.PAGE_SIZE, this.job)),
     ).subscribe(candidatesPage => {
       this.page = candidatesPage;
       this.loading = false;

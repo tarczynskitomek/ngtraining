@@ -3,7 +3,9 @@
          [rows]="PAGE_SIZE"
          [lazy]="true"
          (onLazyLoad)="onLoad($event)"
-         [totalRecords]="totalElements">
+         [totalRecords]="totalElements"
+         selectionMode="single"
+         (onRowSelect)="selectJob($event.data)">
   <ng-template pTemplate="header">
     <tr>
       <th>Id</th>
@@ -13,7 +15,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-job>
-    <tr>
+    <tr [pSelectableRow]="job">
       <td>{{job.id}}</td>
       <td>{{job.code}}</td>
       <td>{{job.name}}</td>

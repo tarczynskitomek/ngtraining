@@ -3,6 +3,7 @@ import {JobService} from "../service/job.service";
 import {Subject} from "rxjs";
 import {Job} from "../service/job";
 import {LazyLoadEvent} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-job-list',
@@ -17,7 +18,8 @@ export class JobListComponent implements OnInit {
   currentPage: number;
   totalElements: number;
 
-  constructor(private readonly jobService: JobService) {
+  constructor(private readonly jobService: JobService,
+              private readonly router: Router) {
   }
 
   ngOnInit() {
@@ -32,4 +34,7 @@ export class JobListComponent implements OnInit {
       });
   }
 
+  selectJob(job: Job) {
+    this.router.navigateByUrl(`/jobs/${job.id}`);
+  }
 }

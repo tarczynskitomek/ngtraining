@@ -4,19 +4,24 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {map, tap} from "rxjs/operators";
 import {Page} from "./page";
+import {Job} from "./job";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidateService {
-  private readonly resourcePath = '/candidates';
 
   constructor(private readonly httpClient: HttpClient) {
   }
 
-  getCandidates(page: number, pageSize: number): Observable<Page<Candidate>> {
-    const params = this.buildParams(page, pageSize);
-    return this.httpClient.get<Candidate[]>(this.resourcePath, { params })
+  getCandidates(page: number, pageSize: number, job: Job | null): Observable<Page<Candidate>> {
+    let params = this.buildParams(page, pageSize);
+    let resourcePath = '/candidates';
+    if (job) {
+      params = params.append('jobId', job.id.toString());
+      resourcePath += '/search/findByJobId';
+    }
+    return this.httpClient.get<Candidate[]>(resourcePath, { params })
       .pipe(
         tap(data => console.log(data)),
         map((data: any) => new Page(

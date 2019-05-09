@@ -1,0 +1,10 @@
+<h1>Job details</h1>
+
+<div class="grid-container">
+  <div>Code:</div><div>{{job?.code | uppercase}}</div>
+  <div>Name:</div><div>{{job?.name}}</div>
+  <div>Description:</div><div>{{job?.description}}</div>
+  <div>Valid from:</div><div>{{job?.validFrom | date: 'dd-MM-yyyy'}}</div>
+</div>
+
+<app-candidate-list *ngIf="job" [job]="job"></app-candidate-list>
