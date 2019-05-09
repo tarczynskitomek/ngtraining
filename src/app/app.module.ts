@@ -14,6 +14,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MenubarModule} from "primeng/menubar";
 import {TableModule} from "primeng/table";
 import {HttpClientModule} from "@angular/common/http";
+import { FilterComponent } from './filter/filter.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     CandidateListComponent,
     JobListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import {HttpClientModule} from "@angular/common/http";
     MenubarModule,
     TableModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
